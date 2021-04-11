@@ -1,0 +1,57 @@
+<div class="conatiner">
+    <br>
+    <div style="width: 50%; float: left;">
+
+        <form (ngSubmit)='updateProduct()' [formGroup]='productEditForm' novalidate class="form">
+            
+            
+            <input formControlName='Id' class="form-control form-control-lg" type="text">
+
+            <br>
+
+            <input formControlName='Title' class="form-control form-control-lg" type="text">
+            <br>
+
+            <input formControlName='Price' class="form-control form-control-lg" type="text">
+            <div class="alert alert-danger"
+                *ngIf="productEditForm?.get('Price')?.dirty && productEditForm?.get('Price')?.errors && productEditForm?.get('Price')?.touched ">
+                Price should be in between {{min}} and {{max}}
+            </div>
+
+            <br>
+            <input formControlName='ExpiryDate' class="form-control form-control-lg" type="text">
+
+            <br>
+            <input formControlName='Quantity' class="form-control form-control-lg" type="text">
+
+            <br>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" [value]="true" formControlName='isInStock'>
+                <label class="form-check-label">In Stock</label>
+
+            </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" [value]="false" formControlName='isInStock'>
+                <label class="form-check-label">Out of Stock</label>
+            </div>
+
+            <br>
+            <br>
+            <button type="submit" [disabled]='productEditForm.invalid' class="btn btn-primary mb-2">Update Product</button>
+
+        </form>
+
+
+    </div>
+    <app-child2></app-child2>
+    <div style="height: 650px;"></div>
+    <footer class="page-footer font-small blue">
+        <div class="footer-copyright text-center py-3" style="color: grey;">
+            <h5>Explanation :</h5>
+            This Demo is implemented with the help of Structure directive and displaying the data of purchaser and their
+            items purchased.
+        </div>
+    </footer>
+</div>
